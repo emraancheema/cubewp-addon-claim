@@ -1,0 +1,27 @@
+.cwp-claim-request-actions {
+    display: flex;
+    justify-content: space-between;
+}
+.cwp-claim-request-actions .components-button {
+    width: calc(50% - 34px);
+    margin: 0 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.cwp-claim-request-actions.cwp-request-reply .components-button {
+    pointer-events: none;
+    transform: none;
+    opacity: 1;
+    box-shadow: none;
+    outline: none;
+}
+.cwp-claim-request-actions.cwp-request-reply .components-button.is-primary {
+    color: hsla(0,0%,100%,.4);
+    background: #007cba;
+    border-color: #007cba;
+}
+.cwp-claim-request-actions.cwp-request-reply .components-button.is-secondary {
+    color: #828282;
+    background: #eaeaea;
+}

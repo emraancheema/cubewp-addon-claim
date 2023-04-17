@@ -1,0 +1,121 @@
+form#cwp-from-cwp_claim #wp-the_content-editor-container .mce-panel {
+    border: 0;
+    box-shadow: none;
+}
+form#cwp-from-cwp_claim #wp-the_content-editor-container .mce-panel .mce-stack-layout-item.mce-first,
+form#cwp-from-cwp_claim #wp-the_content-editor-container .mce-panel .mce-stack-layout-item.mce-last{
+    display: none;
+}
+form#cwp-from-cwp_claim #wp-the_content-editor-container .mce-panel .mce-edit-area.mce-stack-layout-item{
+	width:100%;
+}
+form#cwp-from-cwp_claim #wp-the_content-editor-container .mce-panel .mce-edit-area.mce-stack-layout-item iframe#the_content_ifr {
+    border: 1px solid #E0E0E0;
+	border-radius:5px;
+}
+button#cwp-claim-form-btn {
+    display: block;
+    background: #007bff;
+    border: 1px solid #2271b1;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 12px;
+    text-decoration: none;
+    text-shadow: none;
+    width: 100%;
+}
+button#cwp-claim-form-btn:hover {
+    background: #2271b1;
+    color: #ffffff;
+}
+
+
+.cwp-claim-form-container {
+    width: 100%;
+    margin: 0 15px 15px 15px;
+    padding: 8px 15px;
+}
+.cwp-claim-form-modal .cwp-claim-paid-form {
+    display: none;
+    max-width: 450px;
+    margin: auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+}
+.cwp-claim-form-modal .cwp-claim-free-form {
+    max-width: 450px;
+    margin: auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+}
+.cwp-claim-form-modal {
+    display: none;
+}
+.cwp-claim-form-modal {
+    background: #fff;
+    margin: auto !important;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 9;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility ease 0s, opacity ease 1s;
+    padding-top: 50px;
+    display: unset !important;
+    transform: translate(0px, 0px);
+}
+.cwp-claim-form-modal.cwp-claim-visible {
+    opacity: 1;
+    visibility: visible;
+}
+span.cwp-claim-form-close {
+    width: 55px;
+    margin: 16px auto;
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    background: #007bff;
+    padding: 16px 10px;
+    border-radius: 50%;
+    color: #fff;
+}
+span.cwp-claim-form-close:hover {
+    background: #2271b1;
+    color: #fff;
+}
+.cwp-container.cwp-plans-container>.cwp-row {
+    justify-content: center;
+}
+.cwp-plan-type-container,
+.cwp-plan-features,
+.cwp-plans-image .plan-img img {
+    display: none;
+}
+.cwp-plan .cwp-plan-title-des h3.cwp-plan-title {
+    font-size: 22px;
+}
+.cwp-plan .cwp-plan-price-days h2.cwp-plan-price {
+    font-size: 30px;
+}
+.cwp-claim-form-modal .cwp-featured-plan {
+    top: 24px;
+    left: -80px;
+    font-size: 16px;
+}
+.cwp-claim-form-modal.cwp-claim-visible.cwp-claim-form-visible .cwp-plans-container {
+    display: none;
+}
+.cwp-claim-form-modal.cwp-claim-visible.cwp-claim-form-visible .cwp-claim-paid-form {
+    display: block;
+}
