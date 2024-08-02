@@ -107,7 +107,7 @@ class CubeWp_Claim_Processing
             $post_claimed_author  = get_post_field('post_author', $cwp_claimed_post);
             if ($current_user_id == $post_claimed_author) {
                 $response['type'] = 'info';
-                $response['msg']  = esc_html__("You can't submit claim request on your own post", "cubewp-claim");
+                $response['msg']  = sprintf(__('Info! You cannot submit a claim request on your own %s.', 'cubewp-claim'), get_post_type_object(get_post_type($cwp_claimed_post))->labels->singular_name);
                 wp_send_json($response);
             }
         }
@@ -154,7 +154,7 @@ class CubeWp_Claim_Processing
             )
         );
         if ($post['post_type'] == 'cwp_claim' && $paid_claim == 0) {
-            $data['msg'] = esc_html__('Claim request for this post has submitted.', 'cubewp-claim');
+            $data['msg'] = sprintf(__('Claim request for this %s has submitted.', 'cubewp-claim'), get_post_type_object(get_post_type($cwp_claimed_post))->labels->singular_name);
             if ($cwp_claim_type == 'free') {
                 $data['redirectURL'] = get_permalink($cwp_claimed_post);
             } elseif ($cwp_claim_type == 'paid') {

@@ -18,12 +18,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CubeWp_Claim_Load {
 
     /**
-     * Wordpress required version.
-     *
-     * @var string
-     */
-    public static $CubeWp_claim_version = '1.0';
-    /**
 	 * The single instance of the class.
 	 *
 	 * @var CubeWp_Load
@@ -37,14 +31,19 @@ class CubeWp_Claim_Load {
 		}
 		return self::$Load;
 	}
+
+    /**
+     * plugin base of cubewp claim.
+     *
+     * @var $base
+     */
+    
+     public $base = 'cubewp-addon-claim/cubewp-claim.php';
+
     /**
      * CubeWp_Load Constructor.
      */
     public function __construct() {
-        /* CUBEWP_VERSION is defined for current cubewp version */
-        if (!defined('CUBEWP_CLAIM_VERSION')) {
-            define('CUBEWP_CLAIM_VERSION', self::$CubeWp_claim_version);
-        }
 
         self::includes();
 		self::init_hooks();
@@ -60,6 +59,7 @@ class CubeWp_Claim_Load {
         add_action('init', array($this, 'init'), 0);
         add_action('init', array('CubeWp_Claim_Setup', 'init'), 9);
         add_action('init', array('CubeWp_Claim_Columns', 'init'), 9);
+        add_filter( 'plugin_row_meta', array( $this, 'plugin_view_info' ), 80, 3 );
     }
 
     /**
@@ -116,6 +116,18 @@ class CubeWp_Claim_Load {
         unload_textdomain('cubewp-claim');
         load_textdomain('cubewp-claim', WP_LANG_DIR . '/cubewp-addon-claim/cubewp-claim-' . $locale . '.mo');
         load_plugin_textdomain('cubewp-claim', false, plugin_basename(dirname(CUBEWP_CLAIM_PLUGIN_FILE)) . '/languages');
+    }
+
+    public function plugin_view_info( $plugin_meta, $file, $plugin_data ) {
+
+        if ( $file != plugin_basename( $this->base ) ) return $plugin_meta;
+        $cwp_plugin_meta = array(
+            '<a href="https://support.cubewp.com/docs/cubewp-claims/" target="_blank">CubeWP Claim Documentation</a>',
+        );
+        $plugin_meta = array_merge($plugin_meta,$cwp_plugin_meta);
+
+        return $plugin_meta;
+
     }
 
 }

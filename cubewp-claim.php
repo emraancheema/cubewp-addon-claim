@@ -3,12 +3,12 @@
  * Plugin Name: CubeWP Claim
  * Plugin URI: https://cubewp.com/
  * Description: CubeWP Claim is a CubeWP Framework extension, it enable users to submit free or paid ownership claim requests for custom posts (e.g., business or real-estate listings).
- * Version: 1.0.0
+ * Version: 1.0.2
  * Author: CubeWP
  * Author URI: https://CubeWp.com
- * Text Domain: cubewp-frontend
+ * Text Domain: cubewp-claim
  * Domain Path: /languages/
- * @package cubewp-frontend
+ * @package cubewp-claim
  */
 defined('ABSPATH') || exit;
 if (!defined('CUBEWP_CLAIM')) {
@@ -30,6 +30,12 @@ if (!defined('CUBEWP_CLAIM_PLUGIN_URL')) {
 if (!defined('CUBEWP_CLAIM_PLUGIN_FILE')) {
     define('CUBEWP_CLAIM_PLUGIN_FILE', __FILE__);
 }
+
+/* CUBEWP_VERSION is defined for current cubewp version */
+if (!defined('CUBEWP_CLAIM_VERSION')) {
+    define('CUBEWP_CLAIM_VERSION', '1.0.2');
+}
+
 spl_autoload_register('CWP_claims_autoload_classes');
 
 /**
@@ -62,11 +68,17 @@ function CWP_claims_autoload_classes($className) {
     return;
 }
 /**
- * CubeWP addon register activation Hook.
+ * Method cubewp_claim_init
  *
  * @since  1.0
+ * @return void
  */
-//register_activation_hook( CUBEWP_CLAIM_PLUGIN_FILE, 'reviews_active_plugin');
+function cubewp_claim_init(){
+    
+    return new CubeWp_Claim_Load();
+    
+}
+add_action( 'cubewp_loaded', 'cubewp_claim_init');
 
 /**
  * CubeWP addon register activation hook callback function.
@@ -82,9 +94,3 @@ function claim_active_plugin(){
 	do_action( 'cubewp/addon/activation', 'cubewp-addon-claim' );
 
 }
-function claim_plugin(){
-
-	return new CubeWp_Claim_Load();
-
-}
-add_action( 'cubewp_loaded', 'claim_plugin');
